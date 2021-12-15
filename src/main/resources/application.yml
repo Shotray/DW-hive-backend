@@ -1,3 +1,6 @@
+server:
+  port: 8101
+
 
 hive:
   url: jdbc:hive2://10.60.43.53:10000/xny #default ?hive???????
