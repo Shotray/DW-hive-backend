@@ -105,4 +105,33 @@ public class HiveController {
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/actor/cooperation", method = RequestMethod.GET)
+    public ResponseEntity<HashMap<String,Object>> getActorsCooperationTime(){
+        // 记录开始时间
+        long startTime = System.currentTimeMillis();
+        HashMap<String,Object> result = hiveService.getMaxCooperationTimeOfActors();
+        long endTime = System.currentTimeMillis();
+        result.put("time",endTime-startTime);
+        return new ResponseEntity<>(result,HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/director/cooperation",method = RequestMethod.GET)
+    public ResponseEntity<HashMap<String,Object>> getDirectorsCooperationTime(){
+        //记录开始时间
+        long startTime = System.currentTimeMillis();
+        HashMap<String,Object> result = hiveService.getMaxCooperationTimeOfDirectors();
+        long endTime = System.currentTimeMillis();
+        result.put("time",endTime-startTime);
+        return  new ResponseEntity<>(result,HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/actor/director/cooperation",method = RequestMethod.GET)
+    public ResponseEntity<HashMap<String,Object>> getActorDirectorCooperationTime(){
+        long startTime = System.currentTimeMillis();
+        HashMap<String,Object> result = hiveService.getMaxCooperationTimeOfActorsAndDirectors();
+        long endTime = System.currentTimeMillis();
+        result.put("time",endTime - startTime);
+        return new ResponseEntity<>(result,HttpStatus.OK);
+    }
+
 }

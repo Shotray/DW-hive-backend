@@ -1,7 +1,9 @@
 package cn.edu.tongji.dwhivebackend.Service;
 
+import cn.edu.tongji.dwhivebackend.DTO.MovieInfoDto;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -26,6 +28,14 @@ public interface HiveService {
     List<String> getAllMainActorsByMovieAsin(String movieAsin);
 
     List<String> getAllActorsByMovieAsin(String movieAsin);
+
+    HashMap<String,Object> getMaxCooperationTimeOfActors();
+
+    HashMap<String,Object> getMaxCooperationTimeOfDirectors();
+
+    HashMap<String,Object> getMaxCooperationTimeOfActorsAndDirectors();
+
+    HashMap<String,Object> getMovieResultsByMutipleRules(MovieInfoDto movieInfoDto);
 
 }
 
