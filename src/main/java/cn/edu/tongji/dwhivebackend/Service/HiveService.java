@@ -18,5 +18,14 @@ public interface HiveService {
     List<String> getDirectorNameByString(String directorString);
 
     List<String> getActorNameByStr(String actorString);
+
+    List<String> getCategoryNameByStr(String category);
+
+    List<String> getAllDirectorsByMovieAsin(String movieAsin);
+
+    List<String> getAllMainActorsByMovieAsin(String movieAsin);
+
+    List<String> getAllActorsByMovieAsin(String movieAsin);
+
 }
 

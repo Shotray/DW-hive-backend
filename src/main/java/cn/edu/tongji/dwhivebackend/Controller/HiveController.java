@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -62,6 +63,46 @@ public class HiveController {
             @RequestParam(value = "actorName")String actorName
     ){
         return new ResponseEntity<>(hiveService.getActorNameByStr(actorName), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/category", method = RequestMethod.GET)
+    public ResponseEntity<List<String>> getCategoryListByString(
+            @RequestParam(value = "category") String category
+    ){
+        return new ResponseEntity<>(hiveService.getCategoryNameByStr(category), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/movie/director", method = RequestMethod.GET)
+    public ResponseEntity<HashMap<String, Object>> getMovieDirectorByMovieAsin(
+            @RequestParam(value = "movieAsin") String movieAsin,
+            @RequestParam(value = "index") Integer index
+    ){
+        HashMap<String, Object> res = new HashMap<>();
+        res.put("index", index);
+        res.put("director", hiveService.getAllDirectorsByMovieAsin(movieAsin));
+        return new ResponseEntity<>(res, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/movie/mainActor", method = RequestMethod.GET)
+    public ResponseEntity<HashMap<String, Object>> getMovieMainActorByMovieAsin(
+            @RequestParam(value = "movieAsin") String movieAsin,
+            @RequestParam(value = "index") Integer index
+    ){
+        HashMap<String, Object> res = new HashMap<>();
+        res.put("index", index);
+        res.put("mainActor", hiveService.getAllMainActorsByMovieAsin(movieAsin));
+        return new ResponseEntity<>(res, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/movie/actor", method = RequestMethod.GET)
+    public ResponseEntity<HashMap<String, Object>> getMovieActorByMovieAsin(
+            @RequestParam(value = "movieAsin") String movieAsin,
+            @RequestParam(value = "index") Integer index
+    ){
+        HashMap<String, Object> res = new HashMap<>();
+        res.put("index", index);
+        res.put("actor", hiveService.getAllActorsByMovieAsin(movieAsin));
+        return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
 }
