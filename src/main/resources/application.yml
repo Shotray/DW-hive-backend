@@ -1,9 +1,9 @@
 server:
-  port: 8101
+  port: 8102
 
 
 hive:
-  url: jdbc:hive2://10.60.43.53:10000/xny #default ?hive???????
+  url: jdbc:hive2://10.60.43.53:10000/xny
   driver-class-name: org.apache.hive.jdbc.HiveDriver
   type: com.alibaba.druid.pool.DruidDataSource
   user: root

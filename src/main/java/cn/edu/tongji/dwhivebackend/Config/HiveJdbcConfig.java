@@ -29,7 +29,7 @@ public class HiveJdbcConfig {
     private String password;
 
     @Bean
-    public DataSource dataSource(){
+    public DataSource dataSource() {
         DataSource dataSource = new DataSource();
         dataSource.setUrl(url);
         dataSource.setDriverClassName(driver);
@@ -39,7 +39,7 @@ public class HiveJdbcConfig {
     }
 
     @Bean
-    public JdbcTemplate jdbcTemplate(DataSource dataSource){
+    public JdbcTemplate jdbcTemplate(DataSource dataSource) {
         return new JdbcTemplate(dataSource);
     }
 }
